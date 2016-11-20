@@ -1,4 +1,4 @@
-Hint to set up yoyr raspberry pi to share wlan on a pysical ethernet connection.
+Hints to set up your raspberry pi to share wlan on a physical ethernet connection.
 Useful for connecting network devices with only eth to your wireless lan
 
 

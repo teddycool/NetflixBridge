@@ -8,7 +8,7 @@ NetflixBridge will connect to your wifi and share it to the Ethernet cable
 
 The purpose is to act as a bridge between wireless and wired lan to connect a blueray-player only capble of wired lan to our wireless home-lan without using a very long cable.
 
-Leds are used for displaying operation mode and the button for a reset/restart. The pins used is defined in NetflixBrideConfig.py
+Leds are used for displaying operation mode and the button for a reset/restart. The pins used are defined in NetflixBrideConfig.py
 
 
 Indicators:
