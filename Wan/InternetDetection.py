@@ -9,7 +9,7 @@ try:
     from NetflixBridgeConfig import config
 except:
     config = {
-              "InternetDetection": {"URL": "http://www.google.com","TimeSlot":1},
+              "InternetDetection": {"URL": "http://www.google.com","TimeSlot":1}, #Used when testing this module
               }
 
 class InternetDetection(object):
@@ -17,7 +17,6 @@ class InternetDetection(object):
     def __init__(self, gpio):
         print "Init"
         self._lastCheck = 0 #Force check at first update
-        #TODO: fix indicator led
         self._iLed = LedIndicator.LedIndicator(gpio, config["IO"]["YellowLed"])
 
 
@@ -27,19 +26,15 @@ class InternetDetection(object):
 
 
     def update(self):
-        #TODO: set timeinterval for checking
         if time.time() - self._lastCheck > config["InternetDetection"]["TimeSlot"]:
             try:
                 urllib2.urlopen(config["InternetDetection"]["URL"]).close()
                 print "Connected"
                 self._iLed.activate(True)
                 self._lastCheck = time.time()
-
             except:
                 print "Not Connected"
                 self._iLed.activate(False)
-
-
 
     def __del__(self):
         self._iLed.activate(False)

@@ -2,17 +2,15 @@ __author__ = 'teddycool'
 
 #Handles io-inputs from  buttons and switches mounted on the case
 
-
-#TODO: fix raise exception at unlogical states...
-
 try:
     from NetflixBridgeConfig import config
 except:
-    config = {"Button": {"Pressed": 0.1, "LongPressed": 1.5}}
+    config = {"Button": {"Pressed": 0.1, "LongPressed": 1.5}} #Used when testing this module
 import time
 
 #The button is 'on' when holded pressed and IO defined in init is connected to ground
 #Types of signals/states: released, pressed and long-pressed, times for holding are defined in config
+
 class PushButton(object):
     def __init__(self, GPIO, inputpin):
         self._gpio = GPIO

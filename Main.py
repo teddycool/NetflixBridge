@@ -1,8 +1,5 @@
 __author__ = 'teddycool'
 
-# Put up the camera, run calibrate
-# Start to play...
-
 
 import MainLoop
 import time
@@ -23,10 +20,7 @@ class Main(object):
             time.sleep(0.01)
 
 
-#Testcode to run module. Standard Python way of testing modules.
-#OBS !! comment out   line 47: "C:\Python27\Lib\site-packages\pygame\_camera_vidcapture.py":
-#       #self.dev.setresolution(width, height) on row 49 in:
-#
+
 if __name__ == "__main__":
     cd=Main()
     cd.run()

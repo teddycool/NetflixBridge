@@ -2,8 +2,7 @@ __author__ = 'teddycool'
 import time
 from NetflixBridgeConfig import config
 
-#TODO: add statelogic here...
-#Type, starttime, blinktime, idle between blinking sets...
+
 class LedIndicator(object):
     def __init__(self, GPIO, controlpin):
         self._gpio = GPIO

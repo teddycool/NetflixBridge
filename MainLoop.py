@@ -1,9 +1,9 @@
 __author__ = 'teddycool'
-#State-switching and handling of general rendering
 
 import time
 from Inputs import IoInputs
 from Actuators import LedIndicator
+
 #Global GPIO used by all...
 import RPi.GPIO as GPIO
 from NetflixBridgeConfig import config
@@ -13,7 +13,6 @@ import os
 
 class MainLoop(object):
     def __init__(self):
-        #TODO: fix logging to file readable from web
         self._gpio = GPIO
         self._gpio.setmode(GPIO.BCM)
         self._resetButton = IoInputs.PushButton(self._gpio, config["IO"]["RedButton"])
@@ -30,7 +29,7 @@ class MainLoop(object):
         self._resetButton.initialize()
         self._internetLed._iLed.activate()
         self._resetLed.activate()
-        time.sleep(2) #showing working leds...
+        time.sleep(2) #showing that leds are working at startup...
         self._internetLed.initialize()
 
 
