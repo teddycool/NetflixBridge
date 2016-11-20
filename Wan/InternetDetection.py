@@ -17,7 +17,8 @@ class InternetDetection(object):
     def __init__(self, gpio):
         print "Init"
         self._lastCheck = 0 #Force check at first update
-        self._iLed = LedIndicator.LedIndicator(gpio, config["IO"]["YellowLed"])
+        self._iLed = LedIndicator.LedIndicator(gpio, config["IO"]["GreenLed"])
+        self._connected = "Not connected"
 
 
     def initialize(self):
@@ -29,12 +30,13 @@ class InternetDetection(object):
         if time.time() - self._lastCheck > config["InternetDetection"]["TimeSlot"]:
             try:
                 urllib2.urlopen(config["InternetDetection"]["URL"]).close()
-                print "Connected"
+                self._connected = "Connected"
                 self._iLed.activate(True)
                 self._lastCheck = time.time()
             except:
-                print "Not Connected"
+                self._connected = "Not connected"
                 self._iLed.activate(False)
+        return self._connected
 
     def __del__(self):
         self._iLed.activate(False)

@@ -33,18 +33,21 @@ class MainLoop(object):
         self._internetLed.initialize()
 
 
-
     def update(self):
         start = time.time()
         print "Main update time: " + str(time.time() - start)
-        self._internetLed.update()
+        print self._internetLed.update()
         #Supersimple statehandling...
         buttonstate = self._resetButton.update()
+        print buttonstate
         if buttonstate == "Pressed":
             self._resetLed.activate()
         if buttonstate == "LongPressed":
             #Make a sudo reboot...
-            print os.system('sudo mkdir /tmp/stream')
+            print "Rebooting...."
+            self._resetLed.activate(False)
+            self._internetLed._iLed.activate(False)
+            os.system('sudo reboot')
         if buttonstate == "Released":
             self._resetLed.activate(False)
         time.sleep(config["Main"]["CycleTime"] )
